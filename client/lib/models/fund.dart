@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RaiseFund {
+class Fund {
   final String imageUrl;
   final String title;
   final String description;
@@ -9,7 +9,7 @@ class RaiseFund {
   final double fundsRaised;
   final double fundsNeeded;
 
-  const RaiseFund(
+  const Fund(
       {required this.imageUrl,
       required this.title,
       required this.description,

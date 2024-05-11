@@ -123,13 +123,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
-                Gap(height * 0.01),
-                TextButton(
-                  onPressed: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => WelcomeScreen()),
-                  ),
-                  child: const Text('Forgot Password'),
-                ),
+                // Gap(height * 0.01),
+                // TextButton(
+                //   onPressed: () => Navigator.of(context).push(
+                //     MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                //   ),
+                //   child: const Text('Forgot Password'),
+                // ),
                 Gap(height * 0.01),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
