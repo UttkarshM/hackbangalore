@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       imageUrl:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQimUsgNF01EfMgLJIuxLSPa-PAr1_6pswfPBr8Hcr_1g&s',
       title: 'Help this poor man',
-      description: 'He got abandoned',
+      description: 'He got abandoned bbbbbbb',
       location: 'Bangalore',
       timeLeft: '8',
       fundsNeeded: 10000,
