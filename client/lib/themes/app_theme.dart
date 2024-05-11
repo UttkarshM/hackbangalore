@@ -11,6 +11,7 @@ final theme = ThemeData(
     onSecondary: Color.fromARGB(255, 118, 171, 174),
     onPrimary: Color.fromARGB(255, 49, 54, 63),
   ),
+  primaryColor: const Color.fromARGB(255, 34, 40, 49),
   textTheme: textTheme,
   elevatedButtonTheme: elevatedButtonTheme
 );

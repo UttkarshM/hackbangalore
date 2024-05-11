@@ -1,5 +1,6 @@
-import 'package:client/screens/auth/login.dart';
-import 'package:client/screens/auth/signup.dart';
+import 'package:client/screens/app/home_screen.dart';
+import 'package:client/screens/auth/login_screen.dart';
+import 'package:client/screens/auth/signup_screen.dart';
 import 'package:client/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,7 +37,7 @@ class WelcomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
+                    builder: (context) => const HomeScreen(),
                   ),
                 );
               },

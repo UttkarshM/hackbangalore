@@ -1,5 +1,5 @@
-import 'package:client/screens/app/home.dart';
-import 'package:client/screens/auth/login.dart';
+import 'package:client/screens/app/home_screen.dart';
+import 'package:client/screens/auth/login_screen.dart';
 import 'package:client/themes/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
