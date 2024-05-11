@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "766764091598",
+    "project_id": "hackbangalore",
+    "storage_bucket": "hackbangalore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766764091598:android:8ac11602edc6e81e59289f",
+        "android_client_info": {
+          "package_name": "com.example.client"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0Z81h7ZHRpZ-IQYcIA4vvsKe2W0nBy9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
