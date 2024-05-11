@@ -1,6 +1,5 @@
 import 'package:client/screens/welcome.dart';
 import 'package:client/themes/app_theme.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 

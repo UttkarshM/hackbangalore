@@ -1,3 +1,4 @@
+import 'package:client/screens/app/home.dart';
 import 'package:client/screens/auth/signup.dart';
 import 'package:client/screens/welcome.dart';
 import 'package:client/themes/colors.dart';
@@ -31,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('Logged in succesfully')));
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const WelcomeScreen()));
+          .push(MaterialPageRoute(builder: (context) => const HomeScreen()));
     } catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.toString())));
