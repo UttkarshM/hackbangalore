@@ -1,3 +1,4 @@
+import 'package:client/screens/auth/signup.dart';
 import 'package:client/screens/welcome.dart';
 import 'package:client/themes/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,6 +23,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> loginUser() async {
     try {
+      print(emailId.text);
+      print(password.text);
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailId.text, password: password.text);
 
@@ -137,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextButton(
                       onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const WelcomeScreen(),
+                          builder: (context) => const SignupScreen(),
                         ),
                       ),
                       child: Text(

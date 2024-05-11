@@ -1,4 +1,5 @@
 import 'package:client/screens/auth/login.dart';
+import 'package:client/screens/auth/signup.dart';
 import 'package:client/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -52,11 +53,14 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 Text(
                   'Dont have an account?',
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary),
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.secondary),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SignupScreen()));
+                  },
                   child: const Text(
                     'Sign Up!',
                     style: TextStyle(color: Colors.white),
