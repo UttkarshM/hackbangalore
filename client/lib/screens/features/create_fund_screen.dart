@@ -183,7 +183,7 @@ class _CreateFundScreenState extends ConsumerState<CreateFundScreen> {
                         ),
                         maxLength: 10,
                         keyboardType: TextInputType.text,
-                        controller: locationController,
+                        controller: hostedByController,
                       ),
                       Gap(height * 0.015),
                       TextFormField(

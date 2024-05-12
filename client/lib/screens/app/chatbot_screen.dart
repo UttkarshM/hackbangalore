@@ -25,9 +25,9 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     final chatlist = ref.watch(chatsProvider);
 
     void sendPromptAndGetResponse() async{
-      await ref.read(chatsProvider.notifier).sendPrompt(_userMessage.text);
+      ref.read(chatsProvider.notifier).sendPrompt(_userMessage.text);
 
-      await ref.read(chatsProvider.notifier).getResponse();
+      ref.read(chatsProvider.notifier).getResponse();
 
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
