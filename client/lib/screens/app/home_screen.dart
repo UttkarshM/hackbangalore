@@ -1,6 +1,7 @@
 import 'package:client/models/fund.dart';
 import 'package:client/providers/funds_provider.dart';
 import 'package:client/providers/my_funds_provider.dart';
+import 'package:client/screens/app/chatbot_screen.dart';
 import 'package:client/themes/colors.dart';
 import 'package:client/widgets/fund_option.dart';
 import 'package:client/screens/app/raise_fund_screen.dart';
@@ -52,18 +53,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Gap(height * 0.005),
-          Expanded(
-              child: ListView.separated(
-                  itemBuilder: (context, index) =>
-                      FundOption(fundDetails: fundsList[index], idx: index),
-                  separatorBuilder: ((context, index) => Padding(
-                        padding: EdgeInsets.only(top: width * 0.01),
-                      )),
-                  itemCount: fundsList.length))
-        ],
+      body: Container(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Gap(height * 0.005),
+            Expanded(
+                child: ListView.separated(
+                    itemBuilder: (context, index) =>
+                        FundOption(fundDetails: fundsList[index], idx: index),
+                    separatorBuilder: ((context, index) => Padding(
+                          padding: EdgeInsets.only(top: width * 0.01),
+                        )),
+                    itemCount: fundsList.length))
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: colors.d2,
@@ -95,7 +99,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               break;
             case 2:
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+                  MaterialPageRoute(builder: (context) => const ChatScreen()));
               break;
           }
         },

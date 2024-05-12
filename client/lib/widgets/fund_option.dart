@@ -25,114 +25,117 @@ class FundOption extends StatelessWidget {
         child: SizedBox(
           height: height * 0.5,
           width: width * 0.7,
-          child: Column(
-            children: [
-              Flexible(
-                flex: 1,
-                child: Container(
-                  width: double.infinity,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10)),
-                    child: FadeInImage.assetNetwork(
-                      placeholder: 'assets/login.svg',
-                      image:
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQimUsgNF01EfMgLJIuxLSPa-PAr1_6pswfPBr8Hcr_1g&s',
-                      fit: BoxFit.fill,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10)),
+                      child: FadeInImage.assetNetwork(
+                        placeholder: 'assets/login.svg',
+                        image:
+                            fundDetails.imageUrl,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Flexible(
-                  flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        padding: EdgeInsets.only(top: 5, left: 6),
-                        child: Text(
-                          "${fundDetails.title} :",
-                          style: TextStyle(
-                              color: colors.l1,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Container(
-                        constraints: BoxConstraints(maxHeight: height * 0.079),
-                        alignment: Alignment.topLeft,
-                        padding: EdgeInsets.only(top: 5, left: 6),
-                        child: Text(
-                          'Here`s the full story: ${fundDetails.description}',
-                          style: TextStyle(color: colors.l1),
-                        ),
-                      ),
-                      Gap(width * 0.01),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: colors.l2,
-                          ),
-                          Gap(width * 0.006),
-                          Text(
-                            fundDetails.location,
-                            style: TextStyle(color: colors.l2),
-                          ),
-                        ],
-                      ),
-                      Gap(height * 0.006),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            '${fundDetails.timeLeft} DAYS LEFT: ',
+                Flexible(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.only(top: 5, left: 6),
+                          child: Text(
+                            "${fundDetails.title}",
                             style: TextStyle(
                                 color: colors.l1,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
-                          ),
-                          Container(
-                            width: width * 0.6,
-                            child: LinearProgressIndicator(
-                              minHeight: width * 0.02,
-                              value: fundDetails.fundsRaised /
-                                  fundDetails.fundsNeeded,
-                              backgroundColor: colors.l1,
-                              valueColor:
-                                  AlwaysStoppedAnimation<Color>(colors.l2),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Gap(height * 0.02),
-                      RichText(
-                        text: TextSpan(
-                            text: '${fundDetails.fundsRaised}/- ',
-                            style: TextStyle(
-                                color: colors.l1,
-                                fontSize: 20,
+                                fontSize: 24,
                                 fontWeight: FontWeight.bold),
-                            children: [
-                              TextSpan(
-                                  text: 'raised of ',
+                          ),
+                        ),
+                        Container(
+                          constraints: BoxConstraints(maxHeight: height * 0.079),
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.only(top: 5, left: 6),
+                          child: Text(
+                            'Overview: ${fundDetails.description}',
+                            style: TextStyle(color: colors.l1),
+                          ),
+                        ),
+                        Gap(width * 0.01),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              color: colors.l2,
+                            ),
+                            Gap(width * 0.006),
+                            Text(
+                              fundDetails.location,
+                              style: TextStyle(color: colors.l2),
+                            ),
+                          ],
+                        ),
+                        Gap(height * 0.006),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              '${fundDetails.timeLeft} left: ',
+                              style: TextStyle(
+                                  color: colors.l1,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                            ),
+                            Container(
+                              width: width * 0.6,
+                              child: LinearProgressIndicator(
+                                minHeight: width * 0.02,
+                                value: fundDetails.fundsRaised /
+                                    fundDetails.fundsNeeded,
+                                backgroundColor: colors.l1,
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(colors.l2),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Gap(height * 0.02),
+                        RichText(
+                          text: TextSpan(
+                              text: '${fundDetails.fundsRaised}/- ',
+                              style: TextStyle(
+                                  color: colors.l1,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              children: [
+                                TextSpan(
+                                    text: 'raised of ',
+                                    style: TextStyle(
+                                        color: colors.l2,
+                                        fontStyle: FontStyle.italic,
+                                        fontSize: 20)),
+                                TextSpan(
+                                  text: '${fundDetails.fundsNeeded}/- ',
                                   style: TextStyle(
-                                      color: colors.l2,
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 20)),
-                              TextSpan(
-                                text: '${fundDetails.fundsNeeded}/- ',
-                                style: TextStyle(
-                                    color: colors.l1,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ]),
-                      )
-                    ],
-                  ))
-            ],
+                                      color: colors.l1,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ]),
+                        )
+                      ],
+                    ))
+              ],
+            ),
           ),
         ),
       ),
