@@ -1,4 +1,5 @@
 import 'package:client/models/fund.dart';
+import 'package:client/providers/funds_provider.dart';
 import 'package:client/providers/my_funds_provider.dart';
 import 'package:client/themes/colors.dart';
 import 'package:client/widgets/fund_option.dart';
@@ -18,20 +19,13 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   AppColors colors = AppColors();
-  Fund fund = const Fund(
-      imageUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQimUsgNF01EfMgLJIuxLSPa-PAr1_6pswfPBr8Hcr_1g&s',
-      title: 'Help this poor man',
-      description: 'He got abandoned bbbbbbb',
-      location: 'Bangalore',
-      timeLeft: '8',
-      fundsNeeded: 10000,
-      fundsRaised: 5000);
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+
+    List<Fund> fundsList = ref.watch(fundsProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -64,11 +58,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Expanded(
               child: ListView.separated(
                   itemBuilder: (context, index) =>
-                      FundOption(fundDetails: fund, idx: index),
+                      FundOption(fundDetails: fundsList[index], idx: index),
                   separatorBuilder: ((context, index) => Padding(
                         padding: EdgeInsets.only(top: width * 0.01),
                       )),
-                  itemCount: 10))
+                  itemCount: fundsList.length))
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -95,11 +89,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const HomeScreen()));
               break;
-              case 1:
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const RaiseFundScreen()));
+            case 1:
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const RaiseFundScreen()));
               break;
-              case 2:
+            case 2:
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const HomeScreen()));
               break;
