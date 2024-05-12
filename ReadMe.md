@@ -1,6 +1,9 @@
-Getting Started
+# <br><b>Getting Started</b><br>
 
-This project requires Python to run. Make sure you have a compatible version installed (check with python --version).
+This project requires Python to run. Make sure you have a compatible version installed.
+<br>
+You can use the command <b> python --version </b> in your terminal to check the version your system has.
+<br>
 
 Installation
 
