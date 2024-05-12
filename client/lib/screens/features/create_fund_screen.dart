@@ -26,6 +26,7 @@ class _CreateFundScreenState extends ConsumerState<CreateFundScreen> {
   var descriptionController = TextEditingController();
   var locationController = TextEditingController();
   var timeController = TextEditingController();
+  var hostedByController = TextEditingController();
   var amountController = TextEditingController();
 
   AppColors colors = AppColors();
@@ -53,6 +54,7 @@ class _CreateFundScreenState extends ConsumerState<CreateFundScreen> {
             description: descriptionController.text,
             location: locationController.text,
             timeLeft: timeController.text,
+            hostedBy: hostedByController.text,
             fundsNeeded: double.parse(amountController.text),
             fundsRaised: 0);
 
@@ -154,6 +156,24 @@ class _CreateFundScreenState extends ConsumerState<CreateFundScreen> {
                           labelStyle: TextStyle(color: colors.d1),
                           prefixIcon: Icon(
                             Icons.map_sharp,
+                            color: colors.d1,
+                          ),
+                          filled: true,
+                          fillColor: colors.l1,
+                          border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(),
+                        ),
+                        maxLength: 10,
+                        keyboardType: TextInputType.text,
+                        controller: locationController,
+                      ),
+                      Gap(height * 0.015),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Hosted by',
+                          labelStyle: TextStyle(color: colors.d1),
+                          prefixIcon: Icon(
+                            Icons.school,
                             color: colors.d1,
                           ),
                           filled: true,

@@ -1,10 +1,13 @@
 from pymongo import MongoClient
 
 from dotenv import load_dotenv
-import os
 import json
-from bson import json_util
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file, render_template
+import os
+from dotenv import load_dotenv
+from flask_pymongo import PyMongo as pymongo
+import google.generativeai as genai
+from datetime import datetime
 
 load_dotenv()
 
@@ -18,11 +21,45 @@ db = client["Cluster2"]
 collectionUsers = db["Users"]
 app = Flask(__name__)
 
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+
+genai.configure(api_key=GEMINI_API_KEY)
+model = genai.GenerativeModel('gemini-pro')
+
+
+@app.route('/chatbot', methods = ['POST', 'GET'])
+def chatbot():
+    if request.method == 'POST':
+        prompt = request.json.get('prompt')
+        response = model.generate_content(prompt)
+        
+        response_text = response.candidates[0].content.parts[0].text
+        
+        chat = {
+            'prompt' : prompt,
+            'response' : response_text,
+            'timestamp' : datetime.now(),
+        }
+        
+        db.gemini.insert_one(chat)
+        
+        return jsonify({'message': 'response generated successfully'}), 200
+    
+    elif request.method == 'GET':
+        chats = db.gemini.find().sort('timestamp', 1)
+        formatted_chats = [{
+            'prompt': chat['prompt'],
+            'response': chat['response'],
+            'timestamp': chat['timestamp'],
+        } for chat in chats]
+        
+        return jsonify({'chats': formatted_chats}), 200
+
 # post = {"id":0,"name":"jake","credits":1000}
 # collection.insert_one(post)
-import dns.resolver
-dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
-dns.resolver.default_resolver.nameservers=['8.8.8.8']
+# import dns.resolver
+# dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
+# dns.resolver.default_resolver.nameservers=['8.8.8.8']
 #inserts elements into the database
 @app.route('/addusers', methods=['POST'])
 def InsertUsers():
@@ -149,5 +186,5 @@ def deduct():
 def Close():
   client.close()
 
-if __name__ =="__main__":
-  app.run('0.0.0.0',debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)

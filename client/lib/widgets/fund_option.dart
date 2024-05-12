@@ -38,7 +38,7 @@ class FundOption extends StatelessWidget {
                           topLeft: Radius.circular(10),
                           topRight: Radius.circular(10)),
                       child: FadeInImage.assetNetwork(
-                        placeholder: 'assets/login.svg',
+                        placeholder: 'assets/loading.png',
                         image:
                             fundDetails.imageUrl,
                         fit: BoxFit.fill,

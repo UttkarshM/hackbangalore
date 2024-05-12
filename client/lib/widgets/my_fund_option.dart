@@ -85,7 +85,7 @@ class MyFundOption extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            '${fundDetails.timeLeft} DAYS LEFT: ',
+                            '${fundDetails.timeLeft} hours ',
                             style: TextStyle(
                                 color: colors.l1,
                                 fontWeight: FontWeight.bold,
