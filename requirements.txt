@@ -1,0 +1,14 @@
+flask
+flask-pymongo
+requests
+google-generativeai
+python-dotenv
+langchain
+PyPDF2
+faiss-cpu
+langchain_google_genai
+chromadb
+transformers
+datasets
+torch
+PyPDF2
