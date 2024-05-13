@@ -20,14 +20,14 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-     var height = MediaQuery.of(context).size.height;
+    var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     final chatlist = ref.watch(chatsProvider);
 
     void sendPromptAndGetResponse() async{
-      ref.read(chatsProvider.notifier).sendPrompt(_userMessage.text);
+        await ref.read(chatsProvider.notifier).getResponse(_userMessage.text);
+      
 
-      ref.read(chatsProvider.notifier).getResponse();
 
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
@@ -62,20 +62,22 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
               ),
             ),
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 8),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),  color: colors.l1,),
+              padding: const EdgeInsets.symmetric(horizontal: 16)
+                  .copyWith(bottom: 8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: colors.l1,
+              ),
               child: Row(
                 children: [
                   Expanded(
                     child: TextFormField(
                       decoration: InputDecoration(
-                        hintText: 'Start your conversation here...',
-                        labelStyle: TextStyle(color: colors.d1),
-                        filled: true,
-                        fillColor: colors.l1,
-                        border: InputBorder.none
-                      ),
+                          hintText: 'Start your conversation here...',
+                          labelStyle: TextStyle(color: colors.d1),
+                          filled: true,
+                          fillColor: colors.l1,
+                          border: InputBorder.none),
                       keyboardType: TextInputType.text,
                       controller: _userMessage,
                     ),

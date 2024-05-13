@@ -1,15 +1,29 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:http/http.dart' as http;
 
 class ChatsNotifier extends StateNotifier<List<dynamic>> {
-  ChatsNotifier()
-      : super([
-          {'prompt': 'hi', 'response': 'Gemini'}
-        ]);
+  ChatsNotifier() : super([]);
 
-  final url = 'http://192.168.254.94:5000/chatbot';
+  final url = 'http://192.168.78.94:5000';
+
+  Future<void> getResponse(String prompt) async {
+    var geminiApiKey = await dotenv.env['GEMINI_API_KEY'].toString();
+    final model = GenerativeModel(model: 'gemini-pro', apiKey: geminiApiKey);
+    final content = [Content.text(prompt)];
+
+    final response = await model.generateContent(content);
+
+    Map<String, String?> chat = {
+      'prompt': prompt,
+      'response': response.text,
+    };
+
+    state = [...state, chat];
+  }
 
   Future<void> sendPrompt(String prompt) async {
     final request = {'prompt': prompt};
@@ -18,7 +32,7 @@ class ChatsNotifier extends StateNotifier<List<dynamic>> {
       final response = await http.post(Uri.parse(url),
           headers: {"Content-Type": "application/json"},
           body: jsonEncode(request));
-      print(response.body);
+      print('here');
       final decodedResponse = jsonDecode(response.body);
       print(decodedResponse);
     } catch (error) {
@@ -26,7 +40,7 @@ class ChatsNotifier extends StateNotifier<List<dynamic>> {
     }
   }
 
-  Future<void> getResponse() async {
+  Future<void> getResponse2() async {
     try {
       final response = await http.get(Uri.parse(url));
       print('getting');
