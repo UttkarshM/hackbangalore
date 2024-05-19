@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:client/models/fund.dart';
 import 'package:client/screens/features/fund_details_screen.dart';
 import 'package:client/themes/colors.dart';
@@ -37,12 +39,7 @@ class FundOption extends StatelessWidget {
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(10),
                           topRight: Radius.circular(10)),
-                      child: FadeInImage.assetNetwork(
-                        placeholder: 'assets/loading.png',
-                        image:
-                            fundDetails.imageUrl,
-                        fit: BoxFit.fill,
-                      ),
+                      child: Image.file(File(fundDetails.image.path)),
                     ),
                   ),
                 ),

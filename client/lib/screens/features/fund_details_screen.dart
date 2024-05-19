@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:client/models/fund.dart';
 import 'package:client/providers/funds_provider.dart';
 import 'package:client/screens/transactions/donation_screen.dart';
@@ -22,7 +24,7 @@ class _FundDetailsScreenState extends ConsumerState<FundDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<Fund> fundsList = ref.watch(fundsProvider);
+    List<dynamic> fundsList = ref.watch(fundsProvider);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -72,7 +74,7 @@ class _FundDetailsScreenState extends ConsumerState<FundDetailsScreen> {
                   SizedBox(
                     height: height * 0.3,
                     width: double.infinity,
-                    child: Image.network(fundsList[widget.index].imageUrl, fit: BoxFit.fill,),
+                    child: Image.file(File(fundsList[widget.index].image!.path)),
                   ),
                   Gap(height*0.01),
                   Align(

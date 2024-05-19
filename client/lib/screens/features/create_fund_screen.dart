@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:client/models/my_fund.dart';
+import 'package:client/providers/chosen_provider.dart';
+import 'package:client/providers/funds_provider.dart';
 import 'package:client/providers/my_funds_provider.dart';
 import 'package:client/screens/app/home_screen.dart';
 import 'package:client/screens/app/raise_fund_screen.dart';
@@ -60,9 +62,11 @@ class _CreateFundScreenState extends ConsumerState<CreateFundScreen> {
 
         setState(() {
           ref.read(myFundsProvider.notifier).addFund(fund);
+          ref.read(fundsProvider.notifier).addFunds(fund);
+          print(ref.watch(chosenProvider.notifier).state);
         });
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const RaiseFundScreen()));
+            .push(MaterialPageRoute(builder: (context) => const HomeScreen()));
       }
     }
 
@@ -224,7 +228,7 @@ class _CreateFundScreenState extends ConsumerState<CreateFundScreen> {
                       ElevatedButton(
                         onPressed: createFund,
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: colors.l2,
+                            backgroundColor: colors.d3,
                             minimumSize: Size(width * 0.85, height * 0.08),
                             shape: const RoundedRectangleBorder(
                                 borderRadius:

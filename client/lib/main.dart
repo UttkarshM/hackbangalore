@@ -1,5 +1,7 @@
 import 'package:client/screens/app/chatbot_screen.dart';
 import 'package:client/screens/app/choose_screen.dart';
+import 'package:client/screens/app/fundraiser_pages/details_screen.dart';
+import 'package:client/screens/app/home_screen.dart';
 import 'package:client/screens/welcome_screen.dart';
 import 'package:client/themes/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: theme,
       debugShowCheckedModeBanner: false,
-      home: const ChooseScreen(),
+      home: const DetailsScreen(),
     );
   }
 }

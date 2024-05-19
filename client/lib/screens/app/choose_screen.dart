@@ -1,5 +1,6 @@
 import 'package:client/providers/chosen_provider.dart';
 import 'package:client/screens/auth/login_screen.dart';
+import 'package:client/screens/welcome_screen.dart';
 import 'package:client/themes/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +90,7 @@ class _ChooseScreenState extends ConsumerState<ChooseScreen> {
                           ElevatedButton(
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const LoginScreen()));
+                                  builder: (context) => const WelcomeScreen()));
                               ref.read(chosenProvider.notifier).state = true;
                               print(ref.read(chosenProvider.notifier).state);
                             },
@@ -111,7 +112,7 @@ class _ChooseScreenState extends ConsumerState<ChooseScreen> {
                           ElevatedButton(
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const LoginScreen()));
+                                  builder: (context) => const WelcomeScreen()));
                               ref.read(chosenProvider.notifier).state = false;
                               print(ref.read(chosenProvider.notifier).state);
                             },

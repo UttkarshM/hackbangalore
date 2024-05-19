@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Fund {
-  final String imageUrl;
+  final XFile image;
   final String title;
   final String description;
   final String location;
@@ -11,7 +12,7 @@ class Fund {
   final double fundsNeeded;
 
   const Fund(
-      {required this.imageUrl,
+      {required this.image,
       required this.title,
       required this.description,
       required this.location,
